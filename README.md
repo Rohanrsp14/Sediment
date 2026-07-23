@@ -35,6 +35,7 @@ usage dashboards dodge: of the tokens you spent, what fraction produced work tha
 - [Dashboard](#dashboard)
 - [Pricing](#pricing)
 - [Privacy](#privacy)
+- [Project structure](#project-structure)
 - [Development](#development)
 - [Status](#status)
 
@@ -119,6 +120,39 @@ Writes a self-contained, offline HTML dashboard — a stratigraphic "core-log" o
 ## Privacy
 
 The tool only reads local transcript files and computes; it makes no network calls and writes nothing to your Claude state directories. Your transcripts contain prompts, file paths, and code — treat any exported JSON or dashboard as sensitive. `.gitignore` excludes generated snapshots/dashboards and any real `.jsonl` by default; only the synthetic fixture under `fixtures/` is tracked.
+
+<br>
+
+## Project structure
+
+```
+sediment/
+├── bin/
+│   └── sediment.mjs         CLI entry point — all subcommands, argument parsing
+├── src/
+│   ├── schema.mjs           declarative registry of every recognized log surface
+│   ├── parse.mjs            the one tolerant JSONL reader, shared by every module
+│   ├── conformance.mjs      read-only schema-conformance scanner (`sediment doctor`)
+│   ├── tokens.mjs           deduped token accounting (dedupe by requestId)
+│   ├── cost.mjs             date-scoped API-equivalent cost + coverage
+│   ├── edits.mjs            code-change reconstruction from structuredPatch
+│   ├── allocation.mjs       the token-allocation centerpiece
+│   ├── guidance.mjs         rule-based usage notes, each traced to one signal
+│   ├── report.mjs           unified snapshot + machine-readable output contract
+│   └── render.mjs           the offline HTML dashboard — a pure view over the snapshot
+├── test/                    61 tests (`node --test`), one file per src module
+├── fixtures/                synthetic Claude Code transcript fixtures (safe to commit)
+├── docs/
+│   ├── spec_v1.md           the full v1 spec: goals, decisions, checkpoints, evals
+│   ├── PROGRESS.md          build log — what's done, what was learned, what's next
+│   └── assets/              README images
+├── pricing.json             editable, date-scoped per-model pricing table
+├── .github/workflows/ci.yml GitHub Actions: full suite on Node 18/20/22, every push
+├── CLAUDE.md                the non-negotiable rules this project doesn't break
+└── package.json
+```
+
+Parsing (`parse.mjs`, `conformance.mjs`) is deliberately kept separate from interpretation (`tokens.mjs` → `cost.mjs` / `edits.mjs` → `allocation.mjs` → `report.mjs`), which is then rendered by a thin, dependency-free view (`render.mjs`). Nothing downstream of `report.mjs` recomputes anything.
 
 <br>
 
