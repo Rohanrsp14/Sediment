@@ -1,0 +1,30 @@
+# Dependencies
+node_modules/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+
+# Real Claude Code transcripts and generated snapshots/dashboards.
+# Fixtures under fixtures/ are synthetic and ARE committed — everything else
+# that looks like a transcript or an exported report must never be.
+*.jsonl
+!fixtures/*.jsonl
+snapshot.json
+dashboard.html
+*-snapshot.json
+*-dashboard.html
+
+# Logs
+*.log
+npm-debug.log*
+
+# Env (Sediment makes no network calls and needs no secrets, but just in case
+# this repo is ever extended)
+.env
+.env.*

@@ -1,0 +1,13 @@
+{"type":"ai-title","aiTitle":"Add input validation","sessionId":"s1"}
+{"type":"mode","mode":"normal","sessionId":"s1"}
+{"type":"permission-mode","permissionMode":"default","sessionId":"s1"}
+{"type":"attachment","sessionId":"s1"}
+{"type":"file-history-snapshot","sessionId":"s1"}
+{"type":"queue-operation","operation":"add","sessionId":"s1"}
+{"type":"user","uuid":"u1","sessionId":"s1","timestamp":"2026-07-18T10:00:00.000Z","message":{"role":"user","content":[{"type":"text","text":"Add validation to the parser"}]}}
+{"type":"assistant","uuid":"a1","requestId":"reqA","sessionId":"s1","timestamp":"2026-07-18T10:00:02.000Z","message":{"role":"assistant","model":"claude-sonnet-5","usage":{"input_tokens":10,"output_tokens":20,"cache_read_input_tokens":100,"cache_creation_input_tokens":5,"service_tier":"standard","speed":"fast"},"content":[{"type":"thinking","thinking":"I will add a guard clause."}]}}
+{"type":"assistant","uuid":"a2","requestId":"reqA","sessionId":"s1","timestamp":"2026-07-18T10:00:02.000Z","message":{"role":"assistant","model":"claude-sonnet-5","usage":{"input_tokens":10,"output_tokens":20,"cache_read_input_tokens":100,"cache_creation_input_tokens":5,"service_tier":"standard","speed":"fast"},"content":[{"type":"text","text":"Adding a guard clause now."}]}}
+{"type":"assistant","uuid":"a3","requestId":"reqA","sessionId":"s1","timestamp":"2026-07-18T10:00:02.000Z","message":{"role":"assistant","model":"claude-sonnet-5","usage":{"input_tokens":10,"output_tokens":20,"cache_read_input_tokens":100,"cache_creation_input_tokens":5,"service_tier":"standard","speed":"fast"},"content":[{"type":"tool_use","id":"t1","name":"Edit","input":{"file_path":"src/parser.js","old_string":"return parse(x)","new_string":"if (x == null) throw new Error('nil')\nreturn parse(x)"}}]}}
+{"type":"user","uuid":"u2","sessionId":"s1","timestamp":"2026-07-18T10:00:04.000Z","toolUseResult":{"type":"update","filePath":"src/parser.js","userModified":false,"structuredPatch":[{"oldStart":1,"oldLines":1,"newStart":1,"newLines":2,"lines":["-return parse(x)","+if (x == null) throw new Error('nil')","+return parse(x)"]}]},"message":{"role":"user","content":[{"type":"tool_result","tool_use_id":"t1","content":"ok"}]}}
+{"type":"system","subtype":"turn_duration","durationMs":4200,"sessionId":"s1"}
+{"type":"assistant","uuid":"a4","requestId":"reqB","sessionId":"s1","timestamp":"2026-07-18T10:00:06.000Z","message":{"role":"assistant","model":"claude-sonnet-5","usage":{"input_tokens":8,"output_tokens":15,"cache_read_input_tokens":210,"cache_creation_input_tokens":0,"service_tier":"standard"},"content":[{"type":"tool_use","id":"t2","name":"CustomMcpTool","input":{"q":"noop"}}]}}

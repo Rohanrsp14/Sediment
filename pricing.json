@@ -1,0 +1,65 @@
+{
+  "currency": "USD",
+  "unit": "per 1M tokens",
+  "verifiedAt": "2026-07-21",
+  "source": "https://platform.claude.com/docs/en/about-claude/pricing (official Anthropic pricing)",
+  "disclaimer": "API-equivalent estimate, NOT an invoice. cacheWrite is the 5-minute cache-write rate (Claude Code default). Rates are date-scoped where a model has scheduled changes; each request is priced at the rate in effect on its own date. Excludes batch discounts, the 1.1x US inference_geo multiplier, fast-mode premiums, and server-tool charges. A model matching no row stays unpriced and lowers coverage.",
+  "models": [
+    {
+      "id": "claude-sonnet-5-intro",
+      "label": "Claude Sonnet 5 (introductory)",
+      "pattern": "^claude-sonnet-5(?:-|$)",
+      "effectiveUntil": "2026-09-01",
+      "input": 2,
+      "cacheRead": 0.2,
+      "cacheWrite": 2.5,
+      "output": 10
+    },
+    {
+      "id": "claude-sonnet-5-standard",
+      "label": "Claude Sonnet 5",
+      "pattern": "^claude-sonnet-5(?:-|$)",
+      "effectiveFrom": "2026-09-01",
+      "input": 3,
+      "cacheRead": 0.3,
+      "cacheWrite": 3.75,
+      "output": 15
+    },
+    {
+      "id": "claude-sonnet-4.5plus",
+      "label": "Claude Sonnet 4.5-4.6",
+      "pattern": "^claude-sonnet-4-(?:5|6)(?:-|$)",
+      "input": 3,
+      "cacheRead": 0.3,
+      "cacheWrite": 3.75,
+      "output": 15
+    },
+    {
+      "id": "claude-opus-4.5plus",
+      "label": "Claude Opus 4.5-4.8",
+      "pattern": "^claude-opus-4-(?:5|6|7|8)(?:-|$)",
+      "input": 5,
+      "cacheRead": 0.5,
+      "cacheWrite": 6.25,
+      "output": 25
+    },
+    {
+      "id": "claude-fable-mythos-5",
+      "label": "Claude Fable / Mythos 5",
+      "pattern": "^claude-(?:fable|mythos)-5(?:-|$)",
+      "input": 10,
+      "cacheRead": 1,
+      "cacheWrite": 12.5,
+      "output": 50
+    },
+    {
+      "id": "claude-haiku-4.5",
+      "label": "Claude Haiku 4.5",
+      "pattern": "^claude-haiku-4-5(?:-|$)",
+      "input": 1,
+      "cacheRead": 0.1,
+      "cacheWrite": 1.25,
+      "output": 5
+    }
+  ]
+}

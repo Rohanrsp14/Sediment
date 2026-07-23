@@ -1,0 +1,28 @@
+{
+  "name": "sediment",
+  "version": "0.0.1",
+  "description": "Where did your tokens go? A read-only, ground-truth analytics tool for Claude Code usage — token accounting, API-equivalent cost, and a deterministic token-retention allocation.",
+  "type": "module",
+  "bin": {
+    "sediment": "./bin/sediment.mjs"
+  },
+  "scripts": {
+    "test": "node --test",
+    "doctor": "node bin/sediment.mjs doctor",
+    "check": "for f in bin/*.mjs src/*.mjs; do node --check \"$f\" || exit 1; done && echo 'all files syntax-ok'"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rohanrsp14/Sediment.git"
+  },
+  "keywords": [
+    "claude-code",
+    "llm-observability",
+    "token-analytics",
+    "agentic-workflows"
+  ],
+  "license": "MIT"
+}
